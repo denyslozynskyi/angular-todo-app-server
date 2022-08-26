@@ -1,0 +1,16 @@
+.aside_navbar {
+    border-right: 3px solid #ad864e;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    a {
+        font-size: 40px;
+        text-decoration: none;
+        color: #290404;
+    }
+}
+
+.main {
+    padding-left: 30px;
+}
