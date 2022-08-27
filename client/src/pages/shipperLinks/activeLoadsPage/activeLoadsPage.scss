@@ -1,0 +1,26 @@
+.active_load_cards {
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.active_load_card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 20px;
+    p, div {
+        width: 50%;
+    }
+}
+
+.cards_message {
+    display: block;
+    font-size: 40px;
+    text-align: center;
+}

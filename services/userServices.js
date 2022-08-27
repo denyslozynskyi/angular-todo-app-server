@@ -13,6 +13,7 @@ async function getUserInfo(req, res) {
 
   return res.json({
     user: {
+      name: user.name,
       _id: user._id,
       role: user.role,
       email: user.email,

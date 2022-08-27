@@ -178,7 +178,21 @@ async function assignTruck(req, res) {
   try {
     const truckId = req.params.id;
     const { userId, role } = req.user;
-    const truck = await Truck.findOne({ _id: truckId, created_by: userId });
+
+    const assignedTruck = await Truck.findOne({ assigned_to: userId });
+
+    const truck = await Truck.findOne({ $and: [
+      { _id: truckId },
+      { created_by: userId }
+    ] })
+    
+    if (truck.assigned_to) {
+      return res.status(400).json({ message: 'Truck already assigned' });
+    }
+
+    if (assignedTruck !== truck && assignedTruck !== null) {
+      await Truck.findByIdAndUpdate({ _id: assignedTruck._id }, { $set: { assigned_to: null } })
+    }
 
     if (role !== 'driver') {
       return res.status(400).json({ message: 'Only for drivers' });
@@ -186,10 +200,6 @@ async function assignTruck(req, res) {
 
     if (!truck) {
       return res.status(400).json({ message: 'No trucks with this id' });
-    }
-
-    if (truck.assigned_to) {
-      return res.status(400).json({ message: 'Truck already assigned' });
     }
 
     return Truck.findByIdAndUpdate({ _id: truckId }, { $set: { assigned_to: userId } })

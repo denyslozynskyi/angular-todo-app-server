@@ -2,13 +2,13 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Component } from 'react';
 
-import ActiveLoadPage from '../driverPages/ActiveLoadPage';
-import CreateTruckPage from '../driverPages/CreateTruckPage';
-import TrucksPage from '../driverPages/TrucksPage';
+import ActiveLoadPage from '../driverLinks/activeLoadPage/ActiveLoadPage';
+import CreateTruckPage from '../driverLinks/createTruckPage/CreateTruckPage';
+import TrucksPage from '../driverLinks/trucksPage/TrucksPage';
 
 import './driverPage.scss';
 
-class DriverPage extends Component {
+class DriverPage extends Component {       
     render() {
         return (
             <>
@@ -24,6 +24,7 @@ class DriverPage extends Component {
                         <Route path="/driver/activeload" element={<ActiveLoadPage/>} exact/>
                         <Route path="/driver/createTruck" element={<CreateTruckPage/>}/>
                         <Route path="/driver/trucks" element={<TrucksPage/>}/>
+                        <Route path="*" element={<ActiveLoadPage/>}/>
                     </Routes>
                 </main>
             </>

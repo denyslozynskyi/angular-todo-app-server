@@ -2,10 +2,10 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Component } from 'react';
 
-import CreateLoadPage from '../shipperLinks/CreateLoadPage';
-import NewLoadsPage from '../shipperLinks/NewLoadsPage';
-import ActiveLoadsPage from '../shipperLinks/ActiveLoadsPage';
-import CompletedLoadsPage from '../shipperLinks/CompletedLoadsPage';
+import CreateLoadPage from '../shipperLinks/createLoadPage/CreateLoadPage';
+import NewLoadsPage from '../shipperLinks/newLoadsPage/NewLoadsPage';
+import ActiveLoadsPage from '../shipperLinks/activeLoadsPage/ActiveLoadsPage';
+import CompletedLoadsPage from '../shipperLinks/completedLoadsPage/CompletedLoadsPage';
 
 import './shipperPage.scss';
 
@@ -27,6 +27,7 @@ class ShipperPage extends Component {
                         <Route path="/shipper/newLoads" element={<NewLoadsPage/>}/>
                         <Route path="/shipper/ativeLoads" element={<ActiveLoadsPage/>}/>
                         <Route path="/shipper/completedLoads" element={<CompletedLoadsPage/>}/>
+                        <Route path="*" element={<ActiveLoadsPage/>}/>
                     </Routes>
                 </main>
             </>

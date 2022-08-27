@@ -23,7 +23,12 @@ async function getLoads(req, res) {
     }
 
     if (role === 'shipper') {
-      const loads = await Load.find({ created_by: userId });
+      const loads = await Load.find({
+        $and: [
+          { created_by: userId },
+          { status },
+        ],
+      });
 
       if (loads.length === 0) {
         return res.status(400).json({ message: 'No loads found' });
@@ -146,9 +151,11 @@ async function toogleLoadState(req, res) {
     }
 
     const loadState = load.state;
+    const truck = await Truck.findOne({ assigned_to: userId });
 
     if (loadState === 'arrived to delivery') {
       await Load.findByIdAndUpdate({ _id: load._id }, { $set: { status: 'shipped', completed: true } });
+      await Truck.findByIdAndUpdate({ _id: truck._id }, { $set: { status: 'IS' } });
       return res.status(400).json({ message: 'Last load state reached' });
     }
 
@@ -291,9 +298,11 @@ async function postLoad(req, res) {
     const { payload, dimensions } = load;
     const { width, length, height } = dimensions;
 
-    const candidate = await Truck.findOne({ status: 'IS' });
+    const candidate = await Truck.findOne({ $and: [{ status: 'IS' }, { assigned_to: { $ne: null } }] });
 
     if (!candidate) {
+      console.log('jopa');
+      await Load.findByIdAndUpdate({ _id: loadId }, { $set: { status: 'new' } });
       return res.status(400).json({ message: 'Truck not found' });
     }
 

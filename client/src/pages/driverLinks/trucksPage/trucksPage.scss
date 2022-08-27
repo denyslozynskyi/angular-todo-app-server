@@ -1,0 +1,59 @@
+.truck_cards {
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.truck_card {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 20px;
+    p {
+        width: 50%;
+    }
+    button {
+        border: none;
+        border-radius: 4px;
+        outline: none;
+        padding: 5px 20px;
+        color: #fff;
+        font-size: 16px;
+    }
+    .truck_card_buttons {
+        display: flex;
+        gap: 10px;
+    }
+    .assign_truck {
+        background-color: #42f563;
+        color: #000;
+    }
+    .delete_truck {
+        background-color: #e83141;
+    }
+}
+
+.cards_message {
+    display: block;
+    font-size: 40px;
+    text-align: center;
+}
+
+.card_error {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    color: red;
+    font-size: 14px;
+}
+
+.card_message {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    color: green;
+    font-size: 14px;
+}
