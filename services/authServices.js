@@ -18,7 +18,7 @@ async function registerUser(req, res) {
       return res.status(400).json({ message: 'Please, specify registartion information' });
     }
 
-    if (!roles.includes(role)) {
+    if (!roles.includes(role.toLowerCase())) {
       return res.status(400).json({ message: 'You can register only as driver or shipper role' });
     }
 
@@ -32,7 +32,7 @@ async function registerUser(req, res) {
       name,
       email,
       password: await bcryptjs.hash(password, 10),
-      role,
+      role: role.toLowerCase(),
     });
 
     return user.save().then(() => res.status(200).json({ message: 'Success' }));
