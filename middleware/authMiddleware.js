@@ -20,7 +20,6 @@ function authMiddleware(req, res, next) {
     req.user = {
       userId: tokenPayload.userId,
       name: tokenPayload.name,
-      role: tokenPayload.role,
     };
     next();
   } catch (err) {

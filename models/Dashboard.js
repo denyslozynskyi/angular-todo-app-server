@@ -5,21 +5,21 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  email: {
+  description: {
     type: String,
     required: true,
   },
-  password: {
-    type: String,
-    required: true,
+  created_by: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
   },
 }, {
   timestamps: { createdAt: 'createdDate' },
   versionKey: false,
 });
 
-const User = mongoose.model('users', userSchema);
+const Dashboard = mongoose.model('dashboards', userSchema);
 
 module.exports = {
-  User,
+  Dashboard,
 };

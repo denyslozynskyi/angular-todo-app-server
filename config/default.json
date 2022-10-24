@@ -1,10 +1,5 @@
 {
     "port": 8080,
-    "secretTokenKey": "node_js_homework",
-    "mongoUri": "mongodb+srv://Denys:secret-password@epamlabnodejs.vpzi9js.mongodb.net/trucks&loadsApp?retryWrites=true&w=majority",
-    "newPassword": "qwerty",
-    "mailerHost": "smtp.gmail.com",
-    "mailerPort": 587,
-    "mailerUser": "epamlabhomeworksmail@gmail.com",
-    "mailerPass": "rjylcjfsgjibpguq"
+    "secretTokenKey": "angular-lab-project",
+    "mongoUri": "mongodb+srv://database_user:very-secure-password@dashboards.ojie5hw.mongodb.net/?retryWrites=true&w=majority"
 }

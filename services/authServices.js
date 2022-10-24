@@ -4,22 +4,15 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const { User } = require('../models/User');
-const { mailer } = require('../mailer/mailer');
-
-const roles = ['driver', 'shipper'];
 
 async function registerUser(req, res) {
   try {
     const {
-      name, email, password, role,
+      name, email, password,
     } = req.body;
 
-    if (!name || !email || !password || !role) {
+    if (!name || !email || !password) {
       return res.status(400).json({ message: 'Please, specify registartion information' });
-    }
-
-    if (!roles.includes(role.toLowerCase())) {
-      return res.status(400).json({ message: 'You can register only as driver or shipper role' });
     }
 
     const candidate = await User.findOne({ email });
@@ -32,7 +25,6 @@ async function registerUser(req, res) {
       name,
       email,
       password: await bcryptjs.hash(password, 10),
-      role: role.toLowerCase(),
     });
 
     return user.save().then(() => res.status(200).json({ message: 'Success' }));
@@ -73,15 +65,8 @@ async function forgotPassword(req, res) {
 
     const password = await bcryptjs.hash('qwerty', 10);
 
-    const message = {
-      to: email,
-      subject: 'Password change',
-      text: `You password changed succesfully.\nNew password: ${config.get('newPassword')}`,
-    };
-
     return User.findByIdAndUpdate({ _id: user._id }, { $set: { password } })
       .then(() => {
-        mailer(message);
         res.status(200).json({ message: 'New password sent to your email address' });
       });
   } catch (e) {

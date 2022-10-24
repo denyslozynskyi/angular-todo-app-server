@@ -5,21 +5,25 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  email: {
+  status: {
     type: String,
     required: true,
   },
-  password: {
-    type: String,
-    required: true,
+  board: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'dashboards',
+  },
+  created_by: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users',
   },
 }, {
   timestamps: { createdAt: 'createdDate' },
   versionKey: false,
 });
 
-const User = mongoose.model('users', userSchema);
+const Task = mongoose.model('tasks', userSchema);
 
 module.exports = {
-  User,
+  Task,
 };

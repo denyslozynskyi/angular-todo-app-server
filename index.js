@@ -1,28 +1,27 @@
 const express = require('express');
 const morgan = require('morgan');
-
-const app = express();
 const mongoose = require('mongoose');
 const config = require('config');
+
+const app = express();
+const PORT = process.env.PORT || config.get('port');
 
 mongoose.connect(config.get('mongoUri'));
 
 const { authRouter } = require('./routers/authRouter');
-const { userRouter } = require('./routers/userRouter');
-const { truckRouter } = require('./routers/truckRouter');
-const { loadRouter } = require('./routers/loadRouter');
+const { taskRouter } = require('./routers/taskRouter');
+const { dashboardRouter } = require('./routers/dashboardRouter');
 
 app.use(express.json());
 app.use(morgan('tiny'));
 
 app.use('/api/auth', authRouter);
-app.use('/api/users/me', userRouter);
-app.use('/api/trucks', truckRouter);
-app.use('/api/loads', loadRouter);
+app.use('/api/tasks', taskRouter);
+app.use('/api/dashboards', dashboardRouter);
 
 const start = async () => {
   try {
-    app.listen(config.get('port'));
+    app.listen(PORT);
   } catch (err) {
     console.error(`Error on server startup: ${err.message}`);
   }
