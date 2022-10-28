@@ -37,13 +37,17 @@ async function loginUser(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
 
+    if (!user) {
+      return res.status(400).json({ message: 'You are not registered!' });
+    }
+
     if (user && await bcryptjs.compare(req.body.password, user.password)) {
       const payload = { name: user.name, userId: user._id, role: user.role };
       const jwtToken = jwt.sign(payload, config.get('secretTokenKey'));
       return res.status(200).json({ jwt_token: jwtToken, role: user.role, name: user.name });
     }
 
-    return res.status(400).json({ message: 'Not authorized' });
+    return res.status(400).json({ message: 'Wrong password!' });
   } catch (e) {
     return console.log(e);
   }
