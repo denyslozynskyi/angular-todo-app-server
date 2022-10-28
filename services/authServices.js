@@ -18,7 +18,7 @@ async function registerUser(req, res) {
     const candidate = await User.findOne({ email });
 
     if (candidate) {
-      return res.status(400).json({ message: `You are already registered as ${candidate.role}` });
+      return res.status(400).json({ message: `You are already registered as ${candidate.name}` });
     }
 
     const user = new User({
