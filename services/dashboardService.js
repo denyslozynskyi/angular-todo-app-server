@@ -35,7 +35,7 @@ async function editDashboard(req, res) {
   }
 }
 
-async function createDashboard(req, res) {
+function createDashboard(req, res) {
   try {
     const { name, description } = req.body;
     const { userId } = req.user;
@@ -50,9 +50,10 @@ async function createDashboard(req, res) {
       created_by: userId,
     });
 
-    const dashboards = await Dashboard.find({ created_by: userId });
-
-    return dashboard.save().then(() => res.status(200).json({ message: 'Dashboard created succesfully!', dashboards }));
+    return dashboard.save().then(() => {
+      const dashboards = Dashboard.find({ created_by: userId });
+      res.status(200).json({ message: 'Dashboard created succesfully!', dashboards });
+    });
   } catch (e) {
     return res.status(400).json({ message: e.message });
   }
