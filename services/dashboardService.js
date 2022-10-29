@@ -51,7 +51,7 @@ async function createDashboard(req, res) {
     });
 
     await dashboard.save();
-    const dashboards = Dashboard.find({ created_by: userId });
+    const dashboards = await Dashboard.find({ created_by: userId });
     return res.status(200).json({ message: 'Dashboard created succesfully!', dashboards });
   } catch (e) {
     return res.status(400).json({ message: e.message });
