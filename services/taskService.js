@@ -7,6 +7,10 @@ async function getTasks(req, res) {
     const { userId } = req.user;
     const dashboardId = req.params.id;
 
+    if (!userId || !dashboardId) {
+      throw(new Error('Please, provide request params'));
+    }
+
     const tasks = await Task.find({ $and: [{ created_by: userId, board: dashboardId }] });
 
     const result = {
@@ -17,6 +21,22 @@ async function getTasks(req, res) {
     };
 
     return res.json({ result });
+  } catch (e) {
+    return res.status(400).json({ message: e.message });
+  }
+}
+
+async function getTask(req, res) {
+  try {
+    const { userId } = req.user;
+    const taskId = req.params.id;
+
+    if (!taskId) {
+      throw (new Error('Please, add task id to request params'));
+    }
+
+    const task = await Task.findOne({ $and: [{ created_by: userId, _id: taskId }] });
+    return res.json(task);
   } catch (e) {
     return res.status(400).json({ message: e.message });
   }
@@ -105,6 +125,7 @@ async function deleteTask(req, res) {
 
 module.exports = {
   getTasks,
+  getTask,
   editTask,
   createTask,
   deleteTask,
