@@ -49,7 +49,7 @@ async function editTask(req, res) {
   }
 }
 
-function createTask(req, res) {
+async function createTask(req, res) {
   try {
     const { name, dashboardId, status } = req.body;
     const { userId } = req.user;
@@ -69,7 +69,17 @@ function createTask(req, res) {
       created_by: userId,
     });
 
-    return task.save().then(() => res.status(200).json({ message: 'Task created succesfully!' }));
+    await task.save();
+    const tasks = await Task.find({ $and: [{ created_by: userId, board: dashboardId }] });
+
+    const result = {
+      toDo: tasks.filter((item) => item.status === 'to do'),
+      inProgress: tasks.filter((item) => item.status === 'in progress'),
+      done: tasks.filter((item) => item.status === 'done'),
+      archived: tasks.filter((item) => item.status === 'archived'),
+    };
+
+    return res.json({ message: 'Task created succesfully!', result });
   } catch (e) {
     return res.status(400).json({ message: e.message });
   }
