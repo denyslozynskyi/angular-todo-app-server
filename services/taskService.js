@@ -8,7 +8,7 @@ async function getTasks(req, res) {
     const dashboardId = req.params.id;
 
     if (!userId || !dashboardId) {
-      throw(new Error('Please, provide request params'));
+      throw (new Error('Please, provide request params'));
     }
 
     const tasks = await Task.find({ $and: [{ created_by: userId, board: dashboardId }] });
@@ -49,7 +49,7 @@ async function editTask(req, res) {
     const task = await Task.findOne({ _id: taskId });
 
     if (!task) {
-      throw (new Error('No dashboard with this id!'));
+      throw (new Error('No task with this id!'));
     }
 
     if (!name || !status) {
