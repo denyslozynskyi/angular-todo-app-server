@@ -69,6 +69,63 @@ async function editTask(req, res) {
   }
 }
 
+async function addComment(req, res) {
+  try {
+    const taskId = req.params.id;
+    const { comment } = req.body;
+    const task = await Task.findOne({ _id: taskId });
+
+    if (!task) {
+      throw (new Error('No task with this id!'));
+    }
+
+    if (!comment) {
+      throw (new Error('Please, specify request body parameters!'));
+    }
+
+    task.comments.push(comment);
+
+    return task.save()
+      .then(() => {
+        res.json({ task });
+      });
+  } catch (e) {
+    return res.status(400).json({ message: e.message });
+  }
+}
+
+async function deleteComment(req, res) {
+  try {
+    const { id, index } = req.params;
+    const task = await Task.findOne({ _id: id });
+
+    if (!task) {
+      throw (new Error('No task with this id!'));
+    }
+
+    if (!task.comments.length) {
+      throw (new Error('No comments in this task!'));
+    }
+
+    if (!index) {
+      throw (new Error('Please, specify request parameters!'));
+    }
+
+    if (index > task.comments.length - 1) {
+      throw (new Error('No comment with this index'));
+    }
+
+    task.comments.splice(index, 1);
+
+    return task.save()
+      .then(() => {
+        res.json({ task });
+      });
+  } catch (e) {
+    return res.status(400).json({ message: e.message });
+  }
+}
+
 async function createTask(req, res) {
   try {
     const { name, dashboardId, status } = req.body;
@@ -127,6 +184,8 @@ module.exports = {
   getTasks,
   getTask,
   editTask,
+  addComment,
+  deleteComment,
   createTask,
   deleteTask,
 };

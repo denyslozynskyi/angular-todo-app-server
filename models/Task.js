@@ -13,6 +13,10 @@ const userSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'dashboards',
   },
+  comments: {
+    type: [String],
+    default: [],
+  },
   created_by: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
