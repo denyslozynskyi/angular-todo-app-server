@@ -21,6 +21,10 @@ const userSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
   },
+  doneDate: {
+    type: Date,
+    default: Date.now(),
+  },
 }, {
   timestamps: { createdAt: 'createdDate' },
   versionKey: false,
