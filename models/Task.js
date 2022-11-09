@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
   },
   doneDate: {
     type: Date,
-    default: Date.now(),
+    default: null,
   },
 }, {
   timestamps: { createdAt: 'createdDate' },
