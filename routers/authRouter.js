@@ -1,11 +1,18 @@
 const express = require('express');
-const { registerUser, loginUser, forgotPassword } = require('../services/authServices');
+const { authMiddleware } = require('../middleware/authMiddleware');
+const {
+  registerUser,
+  loginUser,
+  forgotPassword,
+  getUser,
+} = require('../services/authServices');
 
 const router = express.Router();
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.post('/forgot_password', forgotPassword);
+router.get('/user', authMiddleware, getUser);
 
 module.exports = {
   authRouter: router,

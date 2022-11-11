@@ -78,8 +78,20 @@ async function forgotPassword(req, res) {
   }
 }
 
+async function getUser(req, res) {
+  try {
+    const { userId } = req.user;
+    const user = await User.findOne({ userId });
+
+    res.json({ user });
+  } catch (e) {
+    res.status(400).json({ message: e.message });
+  }
+}
+
 module.exports = {
   registerUser,
   loginUser,
   forgotPassword,
+  getUser,
 };
