@@ -1,5 +1,10 @@
 {
     "port": 8080,
     "secretTokenKey": "angular-lab-project",
-    "mongoUri": "mongodb+srv://database_user:very-secure-password@dashboards.ojie5hw.mongodb.net/?retryWrites=true&w=majority"
+    "mongoUri": "mongodb+srv://database_user:very-secure-password@dashboards.ojie5hw.mongodb.net/?retryWrites=true&w=majority",
+    "newPassword": "qwerty",
+    "mailerHost": "smtp.gmail.com",
+    "mailerPort": 587,
+    "mailerUser": "epamlabhomeworksmail@gmail.com",
+    "mailerPass": "rjylcjfsgjibpguq"
 }

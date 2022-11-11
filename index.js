@@ -10,6 +10,7 @@ const PORT = process.env.PORT || config.get('port');
 mongoose.connect(config.get('mongoUri'));
 
 const { authRouter } = require('./routers/authRouter');
+const { userRouter } = require('./routers/userRouter');
 const { taskRouter } = require('./routers/taskRouter');
 const { dashboardRouter } = require('./routers/dashboardRouter');
 
@@ -18,6 +19,7 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 app.use('/api/auth', authRouter);
+app.use('/api/user', userRouter);
 app.use('/api/tasks', taskRouter);
 app.use('/api/dashboards', dashboardRouter);
 

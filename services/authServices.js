@@ -1,9 +1,11 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-underscore-dangle */
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
 const { User } = require('../models/User');
+const { mailer } = require('../mailer/mailer');
 
 async function registerUser(req, res) {
   try {
@@ -12,13 +14,13 @@ async function registerUser(req, res) {
     } = req.body;
 
     if (!name || !email || !password) {
-      return res.status(400).json({ message: 'Please, specify registartion information' });
+      throw (new Error('Please, specify registartion information'));
     }
 
     const candidate = await User.findOne({ email });
 
     if (candidate) {
-      return res.status(400).json({ message: `You are already registered as ${candidate.name}` });
+      throw (new Error(`You are already registered as ${candidate.name}`));
     }
 
     const user = new User({
@@ -29,7 +31,7 @@ async function registerUser(req, res) {
 
     return user.save().then(() => res.status(200).json({ message: 'Success' }));
   } catch (e) {
-    return console.log(e);
+    res.status(400).json({ message: e.message });
   }
 }
 
@@ -38,7 +40,7 @@ async function loginUser(req, res) {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      return res.status(400).json({ message: 'You are not registered!' });
+      throw (new Error('You are not registered!'));
     }
 
     if (user && await bcryptjs.compare(req.body.password, user.password)) {
@@ -47,9 +49,9 @@ async function loginUser(req, res) {
       return res.status(200).json({ jwt_token: jwtToken, role: user.role, name: user.name });
     }
 
-    return res.status(400).json({ message: 'Wrong password!' });
+    throw (new Error('Wrong password!'));
   } catch (e) {
-    return console.log(e);
+    return res.status(400).json({ message: e.message });
   }
 }
 
@@ -58,32 +60,27 @@ async function forgotPassword(req, res) {
     const { email } = req.body;
 
     if (!email) {
-      return res.status(400).json({ message: 'Please, specify password field' });
+      throw (new Error('Please, specify request body fields'));
     }
 
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ message: 'User not found' });
+      throw (new Error('User not found!'));
     }
 
-    const password = await bcryptjs.hash('qwerty', 10);
+    const password = await bcryptjs.hash(config.get('newPassword'), 10);
+    const message = {
+      to: email,
+      subject: 'Password change',
+      text: `You password changed succesfully.\nNew password: ${config.get('newPassword')}\nBack to app: shorturl.at/mAEI5`,
+    };
 
     return User.findByIdAndUpdate({ _id: user._id }, { $set: { password } })
       .then(() => {
+        mailer(message);
         res.status(200).json({ message: 'New password sent to your email address' });
       });
-  } catch (e) {
-    return console.log(e);
-  }
-}
-
-async function getUser(req, res) {
-  try {
-    const { userId } = req.user;
-    const user = await User.findOne({ userId });
-
-    res.json({ user });
   } catch (e) {
     res.status(400).json({ message: e.message });
   }
@@ -93,5 +90,4 @@ module.exports = {
   registerUser,
   loginUser,
   forgotPassword,
-  getUser,
 };
