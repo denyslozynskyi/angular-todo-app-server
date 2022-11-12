@@ -45,11 +45,17 @@ async function changePassword(req, res) {
 async function changeUserInfo(req, res) {
   try {
     const { userId } = req.user;
-    const user = await User.findOne({ _id: req.user.userId });
+    const user = await User.findOne({ _id: userId });
     const { name, email } = req.body;
 
     if (!user) {
       throw (new Error('No user with this id!'));
+    }
+
+    const candidate = await User.findOne({ email });
+
+    if (candidate) {
+      throw (new Error('This email already registered by another user'));
     }
 
     if (!name || !email) {
