@@ -1,0 +1,20 @@
+{
+  "AUTH": {
+    "LABEL": {
+      "NAME":"Name",
+      "EMAIL": "Email",
+      "PASSWORD": "Password"
+    },
+    "ERROR": {
+      "NAMEINPUT": "Input name please",
+      "EMAILINPUT": "Input correct email please",
+      "PASSWORDINPUT": "Minimum password length is 6 symbols"
+    },
+    "BUTTONS": {
+      "SIGNUP": "sign up",
+      "LOGIN": "login",
+      "SWIYCH": "Switch to {{ registerMode ? 'login' : 'sign up' }}",
+      "FORGOTPASSWORD": "Forgot password"
+    }
+  }
+}

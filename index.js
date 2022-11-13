@@ -13,6 +13,7 @@ const { authRouter } = require('./routers/authRouter');
 const { userRouter } = require('./routers/userRouter');
 const { taskRouter } = require('./routers/taskRouter');
 const { dashboardRouter } = require('./routers/dashboardRouter');
+const { langsRouter } = require('./routers/langsRouter');
 
 app.use(express.json());
 app.use(morgan('tiny'));
@@ -22,6 +23,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 app.use('/api/tasks', taskRouter);
 app.use('/api/dashboards', dashboardRouter);
+app.use('/api/languages', langsRouter);
 
 const start = async () => {
   try {

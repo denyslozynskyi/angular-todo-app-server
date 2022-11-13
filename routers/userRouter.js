@@ -4,7 +4,7 @@ const {
   changePassword,
   changeUserInfo,
   deleteUser,
-} = require('../services/userServices');
+} = require('../services/userService');
 const { authMiddleware } = require('../middleware/authMiddleware');
 
 const router = express.Router();
