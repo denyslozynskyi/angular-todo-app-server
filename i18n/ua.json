@@ -86,7 +86,7 @@
       "NAME":"Ім'я",
       "EMAIL": "Пошта",
       "PASSWORD": "Пароль",
-      "ITEM_NAME": "Ніазва"
+      "ITEM_NAME": "Назва"
     },
     "ERROR": {
       "NAME_INPUT": "Будь ласка, введіть ім'я",
