@@ -1,15 +1,5 @@
 {
   "AUTH": {
-    "LABEL": {
-      "NAME":"Name",
-      "EMAIL": "Email",
-      "PASSWORD": "Password"
-    },
-    "ERROR": {
-      "NAME_INPUT": "Input name please",
-      "EMAIL_INPUT": "Input correct email please",
-      "PASSWORD_INPUT": "Minimum password length is 6 symbols"
-    },
     "BUTTONS": {
       "SIGNUP": "sign up",
       "LOGIN": "login",
@@ -19,5 +9,99 @@
       },
       "FORGOT_PASSWORD": "Forgot password"
     }
+  },
+  "DASHBOARDS": {
+    "LIST": {
+      "CREATE": "Create dashboard",
+      "NO_DASHBOARDS": "No dashboards found"
+    },
+    "CREATE": {
+      "DECRIPTION": "Description",
+      "EMPTY_DESCR_ERROR": "Input description please"
+    },
+    "ITEM": {
+      "EDIT": "Change name"
+    }
+  },
+  "HEADER": {
+    "GREETING": "Hello, {{ username }}!",
+    "LOGOUT": "Logout"
+  },
+  "TASKS": {
+    "PAGE": {
+      "ARCHIVE": "Archive",
+      "TO_DO": "todo",
+      "IN_PROGRESS": "in progress",
+      "DONE": "done"
+    },
+    "ARCHIVE": {
+      "HEADER": "Tasks archive",
+      "NO_TASKS": "No archived tasks",
+      "ARCHIVED": "Archived on: {{ task.updatedAt.toLocaleDateString() }}",
+      "BACK_TO_LIST": "Back to DONE list"
+    },
+    "LIST": {
+      "NO_TASKS": "No tasks yet",
+      "CREATE": "Create task"
+    },
+    "ITEM": {
+      "CREATED": "Creation date: {{ task?.createdDate?.toLocaleDateString() }}",
+      "COMMENTS": "Comments:",
+      "NO_COMMENTS": "No comments yet",
+      "ADD_COMMENT": "Add comment",
+      "ARCHIVE": "Archive"
+    },
+    "ADD_COMMENT": {
+      "COMMENT_TEXT": "Comment text:",
+      "ERROR": "Input comment name please",
+      "ADD": "Add"
+    }
+  },
+  "USER_PAGE": {
+    "NAME": "Name: {{ user.name }}",
+    "EMAIL": "Email: {{ user.email }}",
+    "CREATION_DATE": "Зкщашду сreation date: {{ user.creationDate.toLocaleDateString() }}",
+    "CHANGE_INFO": "Change user information",
+    "CHANGE_PASSWORD": "Change password",
+    "DELETE_USER": "Delete user",
+    "USER_EDIT": {
+      "OLD_PASSWORD": "Old password:",
+      "NEW_PASSWORD": "New password:"
+    }
+  },
+  "DELETE_CONFIRM": {
+    "PLEASE_INPUT": {
+      "DASHBOARD": "Please, input dashboard name to delete.",
+      "USER": "Please, input your email name to delete."
+    }
+  },
+  "TOOLBAR": {
+    "FILTER": "Filter by name:",
+    "SORT": "Sort by:",
+    "NAME": "name",
+    "DATE": "date",
+    "ASC": "asc",
+    "DESC": "desc"
+  },
+  "COMMON": {
+    "LABEL": {
+      "NAME":"Name",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "ITEM_NAME": "name"
+    },
+    "ERROR": {
+      "NAME_INPUT": "Input name please",
+      "EMAIL_INPUT": "Input correct email please",
+      "PASSWORD_INPUT": "Minimum password length is 6 symbols",
+      "NAME_ITEM_INPUT": "Input name please"
+    },
+    "FORM": {
+      "CREATE": "Create"
+    },
+    "EDIT": "Edit",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "DELETE": "Delete"
   }
 }

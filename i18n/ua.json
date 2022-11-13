@@ -19,5 +19,97 @@
       },
       "FORGOT_PASSWORD": "Забув пароль"
     }
+  },
+  "DASHBOARDS": {
+    "LIST": {
+      "CREATE": "Створити дашборд",
+      "NO_DASHBOARDS": "Поки жодного дашборда"
+    },
+    "CREATE": {
+      "DECRIPTION": "Опис",
+      "EMPTY_DESCR_ERROR": "Будь ласка, введіть опис"
+    },
+    "ITEM": {
+      "EDIT": "Змінити назву"
+    }
+  },
+  "HEADER": {
+    "GREETING": "Вітаємо, {{ username }}!",
+    "LOGOUT": "Вийти"
+  },
+  "TASKS": {
+    "PAGE": {
+      "ARCHIVE": "Архів",
+      "TO_DO": "До справ",
+      "IN_PROGRESS": "Працюю",
+      "DONE": "Виконано"
+    },
+    "ARCHIVE": {
+      "HEADER": "Архів задач",
+      "NO_TASKS": "Поки жодних архівованих задач",
+      "ARCHIVED": "Архівовано: {{ task.updatedAt.toLocaleDateString() }}",
+      "BACK_TO_LIST": "Повернути в список 'Виконано'"
+    },
+    "LIST": {
+      "NO_TASKS": "Поки задач немає",
+      "CREATE": "Створити задачу"
+    },
+    "ITEM": {
+      "CREATED": "Дата створення: {{ task?.createdDate?.toLocaleDateString() }}",
+      "COMMENTS": "Коментарі:",
+      "NO_COMMENTS": "Поки коментарів немає",
+      "ADD_COMMENT": "Додати коментар",
+      "ARCHIVE": "Архівувати"
+    },
+    "ADD_COMMENT": {
+      "COMMENT_TEXT": "Текст коментаря:",
+      "ERROR": "Будь ласка, введіть текст коментаря",
+      "ADD": "Додати"
+    }
+  },
+  "USER_PAGE": {
+    "NAME": "Ім'я: {{ user.name }}",
+    "EMAIL": "Пошта: {{ user.email }}",
+    "CREATION_DATE": "Дата створення профілю: {{ user.creationDate.toLocaleDateString() }}",
+    "CHANGE_INFO": "Змінити інформацію",
+    "CHANGE_PASSWORD": "Змінити пароль",
+    "DELETE_USER": "Видалити користувача",
+    "USER_EDIT": {
+      "OLD_PASSWORD": "Старий пароль:",
+      "NEW_PASSWORD": "Новий пароль:"
+    }
+  },
+  "DELETE_CONFIRM": {
+    "PLEASE_INPUT": {
+      "DASHBOARD": "Будь ласка, введіть назву дашборда.",
+      "USER": "Будь ласка, введіть свою пошту."
+    }
+  },
+  "TOOLBAR": {
+    "FILTER": "Фільтрувати по:",
+    "SORT": "Сортувати по:",
+    "NAME": "назві",
+    "DATE": "даті"
+  },
+  "COMMON": {
+    "LABEL": {
+      "NAME":"Ім'я",
+      "EMAIL": "Пошта",
+      "PASSWORD": "Пароль",
+      "ITEM_NAME": "назва"
+    },
+    "ERROR": {
+      "NAME_INPUT": "Будь ласка, введіть ім'я",
+      "EMAIL_INPUT": "Будь ласка, введіть корректний email",
+      "PASSWORD_INPUT": "Мінімальна довжина пароля 6 символів",
+      "NAME_ITEM_INPUT": "Будь ласка, введіть назву"
+    },
+    "FORM": {
+      "CREATE": "Створити"
+    },
+    "EDIT": "Змінити",
+    "SAVE": "Зберегти",
+    "CANCEL": "Відмінити",
+    "DELETE": "Видалити"
   }
 }
