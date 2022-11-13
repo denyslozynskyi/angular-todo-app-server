@@ -1,3 +1,20 @@
 {
-  "HELLO": "Ukrainian"
+  "AUTH": {
+    "LABEL": {
+      "NAME":"Ім'я",
+      "EMAIL": "Пошта",
+      "PASSWORD": "Пароль"
+    },
+    "ERROR": {
+      "NAMEINPUT": "Будь ласка, введіть ім'я",
+      "EMAILINPUT": "Будь ласка, введіть корректний email",
+      "PASSWORDINPUT": "Мфнфмальна довжина пароля 6 символів"
+    },
+    "BUTTONS": {
+      "SIGNUP": "Зареєструватися",
+      "LOGIN": "Увійти",
+      "SWIYCH": "Перейти до {{ registerMode ? 'логіну' : 'реєстрації' }}",
+      "FORGOTPASSWORD": "Забув пароль"
+    }
+  }
 }
