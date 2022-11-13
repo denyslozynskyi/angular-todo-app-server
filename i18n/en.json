@@ -13,7 +13,7 @@
     "BUTTONS": {
       "SIGNUP": "sign up",
       "LOGIN": "login",
-      "SWIYCH": "Switch to {{ registerMode ? 'login' : 'sign up' }}",
+      "SWITCH": "Switch to {{ 'registerMode ? 'login' : 'sign up' }}",
       "FORGOTPASSWORD": "Forgot password"
     }
   }
