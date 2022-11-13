@@ -37,7 +37,7 @@
     "ARCHIVE": {
       "HEADER": "Архів задач",
       "NO_TASKS": "Поки жодних архівованих задач",
-      "ARCHIVED": "Архівовано: {{ task.updatedAt.toLocaleDateString() }}",
+      "ARCHIVED": "Архівовано: {{ updateDate }}",
       "BACK_TO_LIST": "Повернути в список 'Виконано'"
     },
     "LIST": {
@@ -45,7 +45,7 @@
       "CREATE": "Створити задачу"
     },
     "ITEM": {
-      "CREATED": "Дата створення: {{ task?.createdDate?.toLocaleDateString() }}",
+      "CREATED": "Дата створення: {{ createDate }}",
       "COMMENTS": "Коментарі:",
       "NO_COMMENTS": "Поки коментарів немає",
       "ADD_COMMENT": "Додати коментар",
@@ -58,9 +58,9 @@
     }
   },
   "USER_PAGE": {
-    "NAME": "Ім'я: {{ user.name }}",
-    "EMAIL": "Пошта: {{ user.email }}",
-    "CREATION_DATE": "Дата створення профілю: {{ user.creationDate.toLocaleDateString() }}",
+    "NAME": "Ім'я: {{ userName }}",
+    "EMAIL": "Пошта: {{ email }}",
+    "CREATION_DATE": "Дата створення профілю: {{ createDate }}",
     "CHANGE_INFO": "Змінити інформацію",
     "CHANGE_PASSWORD": "Змінити пароль",
     "DELETE_USER": "Видалити користувача",

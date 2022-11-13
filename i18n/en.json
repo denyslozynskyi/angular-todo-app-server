@@ -37,7 +37,7 @@
     "ARCHIVE": {
       "HEADER": "Tasks archive",
       "NO_TASKS": "No archived tasks",
-      "ARCHIVED": "Archived on: {{ task.updatedAt.toLocaleDateString() }}",
+      "ARCHIVED": "Archived on: {{ updateDate }}",
       "BACK_TO_LIST": "Back to DONE list"
     },
     "LIST": {
@@ -45,7 +45,7 @@
       "CREATE": "Create task"
     },
     "ITEM": {
-      "CREATED": "Creation date: {{ task?.createdDate?.toLocaleDateString() }}",
+      "CREATED": "Creation date: {{ createDate }}",
       "COMMENTS": "Comments:",
       "NO_COMMENTS": "No comments yet",
       "ADD_COMMENT": "Add comment",
@@ -58,9 +58,9 @@
     }
   },
   "USER_PAGE": {
-    "NAME": "Name: {{ user.name }}",
-    "EMAIL": "Email: {{ user.email }}",
-    "CREATION_DATE": "Зкщашду сreation date: {{ user.creationDate.toLocaleDateString() }}",
+    "NAME": "Name: {{ userName }}",
+    "EMAIL": "Email: {{ email }}",
+    "CREATION_DATE": "Profile creation date: {{ createDate }}",
     "CHANGE_INFO": "Change user information",
     "CHANGE_PASSWORD": "Change password",
     "DELETE_USER": "Delete user",
