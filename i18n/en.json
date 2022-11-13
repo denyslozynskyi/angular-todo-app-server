@@ -6,15 +6,18 @@
       "PASSWORD": "Password"
     },
     "ERROR": {
-      "NAMEINPUT": "Input name please",
-      "EMAILINPUT": "Input correct email please",
-      "PASSWORDINPUT": "Minimum password length is 6 symbols"
+      "NAME_INPUT": "Input name please",
+      "EMAIL_INPUT": "Input correct email please",
+      "PASSWORD_INPUT": "Minimum password length is 6 symbols"
     },
     "BUTTONS": {
       "SIGNUP": "sign up",
       "LOGIN": "login",
-      "SWITCH": "Switch to {{ 'registerMode ? 'login' : 'sign up' }}",
-      "FORGOTPASSWORD": "Forgot password"
+      "SWITCH_TO": {
+        "LOGIN": "Switch to login",
+        "SIGNUP": "Switch to sign up"
+      },
+      "FORGOT_PASSWORD": "Forgot password"
     }
   }
 }
