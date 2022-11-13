@@ -16,7 +16,7 @@
       "NO_DASHBOARDS": "Поки жодного дашборда"
     },
     "CREATE": {
-      "DECRIPTION": "Опис",
+      "DESCRIPTION": "Опис",
       "EMPTY_DESCR_ERROR": "Будь ласка, введіть опис"
     },
     "ITEM": {
